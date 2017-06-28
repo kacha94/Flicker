@@ -15,7 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let provider = CustomReactiveMoyaProvider<FLPhotoService>()
+        let viewModel = SearchPhotoViewModel(provider: provider)
+        let vc = SearchPhotoController(viewModel: viewModel)
+        window?.rootViewController = CustomNavigationController(rootViewController: vc)
+        
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
@@ -43,4 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+/*https://api.flickr.com/services/rest/ ?api_key=46b9e13fa396ca1a0907717a361ba065 &api_sig=0a565d5e00d6aa90e07e7a42c1755066 &auth_token=72157683231148841-691d60d96c1f8e50 &format=json &method=flickr.photos.search &nojsoncallback=1 &page=1 &per_page=10 &text=girls */
+
+//https://api.flickr.com/services/rest/ ?method=flickr.photos.search &api_key=46b9e13fa396ca1a0907717a361ba065 &tags=girls &text=girls &content_type=1 &per_page=10 &page=2 &format=json &nojsoncallback=1 &auth_token=72157683231148841-691d60d96c1f8e50 &api_sig=101065befdcbe1ba94398c48aa3fe2cd
 
