@@ -42,11 +42,12 @@ class SearchPhotoController: UIViewController {
 
 extension SearchPhotoController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let model = viewModel.modelForRow(atIndex: indexPath.row) else {
-            return UICollectionViewCell()
-        }
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchPhotoControllerCell", for:  indexPath) as? SearchPhotoControllerCell else {
             return UICollectionViewCell()
+        }
+
+        guard let model = viewModel.modelForRow(atIndex: indexPath.row) else {
+            return cell
         }
         cell.url = model.link()
         
