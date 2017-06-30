@@ -21,8 +21,7 @@
 		553DF9421F02AB4000449FEE /* FLPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553DF9411F02AB4000449FEE /* FLPhotoService.swift */; };
 		553DF9451F02B05C00449FEE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553DF9441F02B05C00449FEE /* Config.swift */; };
 		553DF9481F02B0A800449FEE /* CustomReactiveMoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553DF9471F02B0A800449FEE /* CustomReactiveMoyaProvider.swift */; };
-		553DF94B1F02B1C200449FEE /* JSONResponseDataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553DF94A1F02B1C200449FEE /* JSONResponseDataFormatter.swift */; };
-		553DF94F1F02B21D00449FEE /* FLSearchParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553DF94E1F02B21D00449FEE /* FLSearchParams.swift */; };
+		553DF94F1F02B21D00449FEE /* FLGetRecentPhotosParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553DF94E1F02B21D00449FEE /* FLGetRecentPhotosParams.swift */; };
 		554F35241F03DCAB00EABAD8 /* PhotosLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F35221F03DCAB00EABAD8 /* PhotosLayout.swift */; };
 		554F35251F03DCAB00EABAD8 /* PhotosLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F35231F03DCAB00EABAD8 /* PhotosLayoutAttributes.swift */; };
 		554F35281F03DE5C00EABAD8 /* PhotoSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F35271F03DE5C00EABAD8 /* PhotoSizeCalculator.swift */; };
@@ -30,6 +29,8 @@
 		554F35321F03E7A900EABAD8 /* SignalProducer+Argo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F35301F03E7A900EABAD8 /* SignalProducer+Argo.swift */; };
 		554F35351F03E82900EABAD8 /* MDPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F35341F03E82900EABAD8 /* MDPhoto.swift */; };
 		554F35371F03EB3F00EABAD8 /* MDPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F35361F03EB3F00EABAD8 /* MDPhotos.swift */; };
+		559DF1C91F0633E80099997A /* FLPortionParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559DF1C81F0633E80099997A /* FLPortionParameters.swift */; };
+		559DF1CB1F0633FE0099997A /* FLBaseParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559DF1CA1F0633FE0099997A /* FLBaseParams.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,8 +50,7 @@
 		553DF9411F02AB4000449FEE /* FLPhotoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLPhotoService.swift; sourceTree = "<group>"; };
 		553DF9441F02B05C00449FEE /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		553DF9471F02B0A800449FEE /* CustomReactiveMoyaProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomReactiveMoyaProvider.swift; sourceTree = "<group>"; };
-		553DF94A1F02B1C200449FEE /* JSONResponseDataFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONResponseDataFormatter.swift; sourceTree = "<group>"; };
-		553DF94E1F02B21D00449FEE /* FLSearchParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLSearchParams.swift; sourceTree = "<group>"; };
+		553DF94E1F02B21D00449FEE /* FLGetRecentPhotosParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLGetRecentPhotosParams.swift; sourceTree = "<group>"; };
 		554F35221F03DCAB00EABAD8 /* PhotosLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosLayout.swift; sourceTree = "<group>"; };
 		554F35231F03DCAB00EABAD8 /* PhotosLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosLayoutAttributes.swift; sourceTree = "<group>"; };
 		554F35271F03DE5C00EABAD8 /* PhotoSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSizeCalculator.swift; sourceTree = "<group>"; };
@@ -58,6 +58,8 @@
 		554F35301F03E7A900EABAD8 /* SignalProducer+Argo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignalProducer+Argo.swift"; sourceTree = "<group>"; };
 		554F35341F03E82900EABAD8 /* MDPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDPhoto.swift; sourceTree = "<group>"; };
 		554F35361F03EB3F00EABAD8 /* MDPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDPhotos.swift; sourceTree = "<group>"; };
+		559DF1C81F0633E80099997A /* FLPortionParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLPortionParameters.swift; sourceTree = "<group>"; };
+		559DF1CA1F0633FE0099997A /* FLBaseParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLBaseParams.swift; sourceTree = "<group>"; };
 		5FD9802FF5EB4AB1BB8107B2 /* Pods-FlickerPhotosService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickerPhotosService.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickerPhotosService/Pods-FlickerPhotosService.debug.xcconfig"; sourceTree = "<group>"; };
 		E139BFAB6015A765762DFF3D /* Pods_FlickerPhotosService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickerPhotosService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -163,21 +165,12 @@
 		553DF9401F02AB3700449FEE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				559DF1CC1F0634140099997A /* Services */,
 				554F352B1F03E6A900EABAD8 /* MDObjects */,
 				554F35261F03DE4F00EABAD8 /* PhotoSizeCalculator */,
 				554F35211F03DC9600EABAD8 /* Layout */,
-				553DF9491F02B1BA00449FEE /* Formatters */,
-				553DF9501F02B2A900449FEE /* PhotoServices */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		553DF9491F02B1BA00449FEE /* Formatters */ = {
-			isa = PBXGroup;
-			children = (
-				553DF94A1F02B1C200449FEE /* JSONResponseDataFormatter.swift */,
-			);
-			name = Formatters;
 			sourceTree = "<group>";
 		};
 		553DF94C1F02B20400449FEE /* CustomReactiveMoyaProvider */ = {
@@ -191,18 +184,18 @@
 		553DF94D1F02B21000449FEE /* Params */ = {
 			isa = PBXGroup;
 			children = (
-				553DF94E1F02B21D00449FEE /* FLSearchParams.swift */,
+				553DF94E1F02B21D00449FEE /* FLGetRecentPhotosParams.swift */,
 			);
 			name = Params;
 			sourceTree = "<group>";
 		};
-		553DF9501F02B2A900449FEE /* PhotoServices */ = {
+		553DF9501F02B2A900449FEE /* PhotoService */ = {
 			isa = PBXGroup;
 			children = (
 				553DF94D1F02B21000449FEE /* Params */,
 				553DF9411F02AB4000449FEE /* FLPhotoService.swift */,
 			);
-			name = PhotoServices;
+			name = PhotoService;
 			sourceTree = "<group>";
 		};
 		553DF9541F02BA9400449FEE /* Extensions */ = {
@@ -248,6 +241,24 @@
 				554F35301F03E7A900EABAD8 /* SignalProducer+Argo.swift */,
 			);
 			name = Moya;
+			sourceTree = "<group>";
+		};
+		559DF1C71F0633C90099997A /* BaseParams */ = {
+			isa = PBXGroup;
+			children = (
+				559DF1C81F0633E80099997A /* FLPortionParameters.swift */,
+				559DF1CA1F0633FE0099997A /* FLBaseParams.swift */,
+			);
+			name = BaseParams;
+			sourceTree = "<group>";
+		};
+		559DF1CC1F0634140099997A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				559DF1C71F0633C90099997A /* BaseParams */,
+				553DF9501F02B2A900449FEE /* PhotoService */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		59079764C37BB320671D3F9A /* Pods */ = {
@@ -393,11 +404,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				553DF9341F029A7700449FEE /* CustomNavigationController.swift in Sources */,
-				553DF94B1F02B1C200449FEE /* JSONResponseDataFormatter.swift in Sources */,
 				553DF93F1F029C3D00449FEE /* SearchPhotoViewModel.swift in Sources */,
 				553DF9481F02B0A800449FEE /* CustomReactiveMoyaProvider.swift in Sources */,
 				554F35281F03DE5C00EABAD8 /* PhotoSizeCalculator.swift in Sources */,
-				553DF94F1F02B21D00449FEE /* FLSearchParams.swift in Sources */,
+				553DF94F1F02B21D00449FEE /* FLGetRecentPhotosParams.swift in Sources */,
+				559DF1C91F0633E80099997A /* FLPortionParameters.swift in Sources */,
 				553DF93B1F029BB900449FEE /* SearchPhotoController.swift in Sources */,
 				554F35321F03E7A900EABAD8 /* SignalProducer+Argo.swift in Sources */,
 				552D51861F02C54B00162553 /* Dictionary+Appending.swift in Sources */,
@@ -410,6 +421,7 @@
 				554F35371F03EB3F00EABAD8 /* MDPhotos.swift in Sources */,
 				554F35251F03DCAB00EABAD8 /* PhotosLayoutAttributes.swift in Sources */,
 				552D51831F02BCE700162553 /* SearchPhotoControllerCell.swift in Sources */,
+				559DF1CB1F0633FE0099997A /* FLBaseParams.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

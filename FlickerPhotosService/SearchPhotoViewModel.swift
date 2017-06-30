@@ -22,7 +22,7 @@ class SearchPhotoViewModel {
     fileprivate let _indexPathsToInsert: MutableProperty<[IndexPath]> = MutableProperty([])
     fileprivate let _reloadData: MutableProperty<Bool> = MutableProperty(false)
     
-    fileprivate var currentPage: Int = 1
+    fileprivate let params = FLSearchPhotosParams()
     fileprivate var photos: [MDPhoto] = []
     fileprivate let totalItemsCount = 1000 // HARD Code
     
@@ -31,6 +31,8 @@ class SearchPhotoViewModel {
     //MARK: Initializers
     init(provider: ReactiveSwiftMoyaProvider<FLPhotoService>) {
         self.provider = provider
+        params.perPage = 10
+        params.page = 1
     }
 }
 
@@ -54,13 +56,20 @@ extension SearchPhotoViewModel {
 
 //MARK: Api methods
 extension SearchPhotoViewModel {
-    func loadInitialPhotos() {
-        currentPage = 1
-        let params = FLGetPopularPhotosParams()
-        params.page = currentPage
-        params.perPage = 10
+    func search(withText text: String?) {
         photos = []
-        load(withParams: params)
+        
+        params.searchText = text
+        params.page = 1
+        
+        load(withService: .searchPhoto(params))
+    }
+    
+    func loadInitialPhotos() {
+        photos = []
+        params.page = 1
+        
+        load(withService: .searchPhoto(params))
     }
 
     func loadNextPhotoPortion() {
@@ -74,20 +83,17 @@ extension SearchPhotoViewModel {
             return
         }
         
-        currentPage += 1
-        let params = FLGetPopularPhotosParams()
-        params.page = currentPage
-        params.perPage = 10
-        load(withParams: params)
+        params.page += 1
+        load(withService: .searchPhoto(params))
     }
 }
 
 
 private extension SearchPhotoViewModel {
-    func load(withParams params: FLGetPopularPhotosParams) {
+    func load(withService service: FLPhotoService) {
         _isLoading.value = true
         provider
-            .request(.getRecent(params))
+            .request(service)
             .filterSuccessfulStatusCodes()
             .mapFlickerObject(type: MDPhotos.self, rootKey: "photos")
             .observe(on: UIScheduler())
@@ -129,6 +135,7 @@ private extension SearchPhotoViewModel {
             })
             .start()
     }
+
     
     static func indexPaths(forItems newItems: [MDPhoto], addedToItemsWithCount count: Int) -> [IndexPath] {
         var indexPathsToReturn: [IndexPath] = []

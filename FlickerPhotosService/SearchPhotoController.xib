@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="scS-uY-MMU">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewLayout key="collectionViewLayout" id="bAB-UI-oiO" customClass="PhotosLayout" customModule="FlickerPhotosService" customModuleProvider="target"/>
                 </collectionView>
@@ -31,16 +31,27 @@
                     <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                     <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </activityIndicatorView>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hP8-JQ-C2y">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="76O-js-Jk6"/>
+                    </connections>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="hP8-JQ-C2y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2xU-aS-e28"/>
+                <constraint firstAttribute="trailing" secondItem="hP8-JQ-C2y" secondAttribute="trailing" id="Jmk-ib-KfV"/>
                 <constraint firstItem="mFX-en-gUz" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="KaY-iU-qcz"/>
                 <constraint firstItem="scS-uY-MMU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Lwe-mJ-hQu"/>
-                <constraint firstItem="scS-uY-MMU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NTZ-hR-cTO"/>
+                <constraint firstItem="hP8-JQ-C2y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ti3-qz-zWa"/>
+                <constraint firstItem="scS-uY-MMU" firstAttribute="top" secondItem="hP8-JQ-C2y" secondAttribute="bottom" id="X9q-Zg-mbg"/>
                 <constraint firstItem="mFX-en-gUz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lbT-xo-PN9"/>
                 <constraint firstAttribute="bottom" secondItem="scS-uY-MMU" secondAttribute="bottom" id="tCc-Vl-NQn"/>
                 <constraint firstAttribute="trailing" secondItem="scS-uY-MMU" secondAttribute="trailing" id="uBv-WN-y7M"/>
             </constraints>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>
 </document>

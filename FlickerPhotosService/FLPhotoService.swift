@@ -10,8 +10,8 @@ import Foundation
 import Moya
 
 enum FLPhotoService {
-    case searchPhoto(FLPortionParameters)
-    case getRecent(FLGetPopularPhotosParams)
+    case searchPhoto(FLSearchPhotosParams)
+    case getRecent(FLGetRecentPhotosParams)
 }
 
 extension FLPhotoService: TargetType {
@@ -53,16 +53,16 @@ extension FLPhotoService: TargetType {
         case .searchPhoto(_):
             return true
         case .getRecent:
-            return false
+            return true
         }
     }
     
     var sampleData: Data {
         switch self {
         case .searchPhoto(_):
-            return "[{\"name\": \"Repo Name\"}]".data(using: String.Encoding.utf8)!
+            return Data()
         case .getRecent:
-            return Data()//"[{\"name\": \"Repo Name\"}]".data(using: String.Encoding.utf8)!
+            return Data()
         }
     }
         

@@ -11,9 +11,6 @@ import UIKit
 
 @objc protocol PhotosLayoutDelegate {
     func collectionView(collectionView: UICollectionView, heightForPhotoAt indexPath: IndexPath, withWidth width: CGFloat) -> CGFloat
-    @objc optional func collectionViewHeightForHeader(collectionView: UICollectionView) -> CGFloat
-    @objc optional func collectionViewSectionHeaderShouldBeSticky(collectionView: UICollectionView) -> Bool
-    @objc optional func collectionViewSectionHeaderStickedHeight(collectionView: UICollectionView) -> CGFloat
 }
 
 class PhotosLayout: UICollectionViewLayout {
@@ -96,19 +93,6 @@ class PhotosLayout: UICollectionViewLayout {
     override func prepare() {
         contentHeight = 0
         
-        let headerHeight = self.headerHeight()
-        if headerHeight != 0 {
-            let headerIndexPath = IndexPath(row: 0, section: 0)
-            let attributes = PhotosLayoutAttributes(forSupplementaryViewOfKind: PhotosLayout.SectionHeaderElementKind,
-                                                  with: headerIndexPath)
-            
-            attributes.frame = CGRect(x: 0,
-                                      y: 0,
-                                      width: collectionWidth,
-                                      height: headerHeight)
-            headerLayoutAttributes = attributes
-        }
-        
         if cache.isEmpty {
             let availableWidthForCells = availableSectionContentWidth - CGFloat(numberOfColumns - 1) * interitemSpacing
             let columnWidth = availableWidthForCells / CGFloat(numberOfColumns)
@@ -119,10 +103,9 @@ class PhotosLayout: UICollectionViewLayout {
                 xOffsets.append(offset)
             }
             
-            var column = 0 //current column to add item to
-            var lastYOffsets = [CGFloat](repeating: headerHeight + sectionContentInsets.top, count: numberOfColumns)
+            var column = 0
+            var lastYOffsets = [CGFloat](repeating: sectionContentInsets.top, count: numberOfColumns)
 
-            //calculating only for first section is ok in this case
             for item in 0..<collectionView!.numberOfItems(inSection: 0) {
                 let indexPath = IndexPath(item: item, section: 0)
                 let height = photoHeight(at: indexPath, withWidth: columnWidth)
@@ -191,31 +174,6 @@ private extension PhotosLayout {
                                             withWidth: width)
     }
     
-    func headerHeight() -> CGFloat {
-        guard let height = delegate?.collectionViewHeightForHeader?(collectionView: collectionView!) else {
-            return 0
-        }
-        
-        return height
-    }
-    
-    func headerShouldBeSticky() -> Bool {
-        guard let shouldSticky = delegate?.collectionViewSectionHeaderShouldBeSticky?(collectionView: collectionView!) else {
-            return false
-        }
-        
-        return shouldSticky
-    }
-    
-    func headerStickyAtYPosition() -> CGFloat {
-        guard let yPosition = delegate?.collectionViewSectionHeaderStickedHeight?(collectionView: collectionView!) else {
-            return 0
-        }
-        
-        return yPosition
-    }
-    
-    
     func nextColumn(withStrategy strategy: ColumnSelectionStrategy, currentColumn: Int, lastYOffsets: [CGFloat]) -> Int {
         switch strategy {
         case .byTurns:
@@ -237,18 +195,6 @@ private extension PhotosLayout {
     func calculateHeaderAttributesForRect(rect: CGRect) -> UICollectionViewLayoutAttributes? {
         if let headerAttributes = headerLayoutAttributes {
             if headerAttributes.frame.intersects(rect) {
-                guard headerShouldBeSticky() else {
-                    return headerAttributes
-                }
-                
-                let contentOffsetY = collectionView!.contentOffset.y
-                let positionY = headerStickyAtYPosition()
-                
-                if contentOffsetY > positionY {
-                    headerAttributes.frame.origin.y = contentOffsetY - positionY
-                } else if contentOffsetY < positionY {
-                    headerAttributes.frame.origin.y = 0
-                }
                 return headerAttributes
             }
         }

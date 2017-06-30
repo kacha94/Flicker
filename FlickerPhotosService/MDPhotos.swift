@@ -16,7 +16,6 @@ struct MDPhotos {
     let page: Int
     let pages: Int
     let perpage: Int
-    let total: Int
 }
 
 //MARK: Decodable
@@ -27,7 +26,6 @@ extension MDPhotos: Decodable {
             <*> json <| "page"
             <*> json <| "pages"
             <*> json <| "perpage"
-            <*> json <| "total"
 
         return photos
     }

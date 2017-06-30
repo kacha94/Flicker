@@ -20,6 +20,7 @@ class SearchPhotoController: UIViewController {
 
     fileprivate var refreshControl: UIRefreshControl!
     fileprivate let viewModel: SearchPhotoViewModel
+    fileprivate var tapGesture: UITapGestureRecognizer?
     
     //MARK: Initializers
     init(viewModel: SearchPhotoViewModel) {
@@ -94,11 +95,52 @@ extension SearchPhotoController: PhotosLayoutDelegate {
         
         return PhotoSizeCalculator.calculateHeight(forPhotoSize: cellSize, width: width)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if viewModel.isLoading.value {
+            return CGSize.zero
+        }
+        return CGSize(width: collectionView.bounds.size.width, height: 55)
+    }
+}
+
+//MARK: UISearchBarDelegate
+extension SearchPhotoController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        viewModel.search(withText: searchBar.text)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            resignBar()
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(resignBar))
+        view.addGestureRecognizer(tapGesture!)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if let validGesture = tapGesture {
+            view.removeGestureRecognizer(validGesture)
+        }
+        
+        if searchBar.text != "" {
+            viewModel.search(withText: searchBar.text)
+        }
+    }
 }
 
 //MARK: Setup UI
 private extension SearchPhotoController {
     func setup() {
+        edgesForExtendedLayout =  []
         title = "Flicker Photos"
         spinner.hidesWhenStopped = true
         
@@ -128,6 +170,10 @@ private extension SearchPhotoController {
     @objc func handleRefresh() {
         viewModel.loadInitialPhotos()
     }
+    
+    @objc func resignBar() {
+        view.endEditing(true)
+    }
 }
 
 //MARK: Binding
@@ -149,11 +195,11 @@ private extension SearchPhotoController {
                 guard let strongSelf = self else {
                     return
                 }
+                
                 if isLoading {
                     strongSelf.spinner.startAnimating()
                 } else {
                     strongSelf.spinner.stopAnimating()
-                    
                     if strongSelf.refreshControl.isRefreshing {
                         strongSelf.refreshControl.endRefreshing()
                     }
